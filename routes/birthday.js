@@ -1,16 +1,15 @@
-// routes/product.js
 var express = require('express');
 var router = express.Router();
 let mongoose = require('mongoose');
-let Stock = require('../model/Stock');
-const stock = require('../model/Stock'); // Import the Stock model
+let Birthday = require('../model/Birthday');
+const birthday = require('../model/Birthday'); // Import the Birthday model
 
-// GET Product page
+
 router.get('/', async (req, res) => {
   try 
   {
-    const stockItems = await Stock.find(); // Fetch all stock items from MongoDB
-    res.render('stock', { title: 'Stock List', stockItems });
+    const birthdayItems = await Birthday.find(); // Fetch all birthday items from MongoDB
+    res.render('birthday', { title: 'Birthday List', birthdayItems });
   } 
   catch (err) 
   {
@@ -21,7 +20,7 @@ router.get('/', async (req, res) => {
 
 router.get('/add', async (req, res) => {
   try {
-    res.render('Parts/add', { title: 'Add' });
+    res.render('Birthdays/add', { title: 'Add' });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error");
@@ -30,19 +29,19 @@ router.get('/add', async (req, res) => {
 
 router.post('/add',async(req,res,next)=>{
   try{
-    let newPart = Stock({
-        "description":req.body.description,
-        "item":req.body.item,
-        "price":req.body.price
+    let newPart = Birthday({
+        "DOB":req.body.DOB,
+        "firstName":req.body.firstName,
+        "lastName":req.body.lastName
     });
-    Stock.create(newPart).then(()=>{
-      res.redirect('/stock');
+    Birthday.create(newPart).then(()=>{
+      res.redirect('/birthday');
       })
   }
   catch(err)
   {
       console.error(err);
-      res.render('Parts/add',{
+      res.render('Birthdays/add',{
           error:'Error on the server'
       })
   }
@@ -51,11 +50,11 @@ router.post('/add',async(req,res,next)=>{
 router.get('/edit/:id',async(req,res,next)=>{
   try{
       const id = req.params.id;
-      const editPart= await Stock.findById(id);
-      res.render('Parts/edit',
+      const editBirthday= await Birthday.findById(id);
+      res.render('Birthdays/edit',
           {
-              title:'Edit Part',
-              Stock:editPart
+              title:'Edit Birthday',
+              Birthday:editBirthday
           }
       )
   }
@@ -70,18 +69,18 @@ router.post('/edit/:id', async (req, res, next) => {
   try {
       let id = req.params.id;
 
-      let updatedPart = {
-          description: req.body.description,
-          item: req.body.item,
-          price: req.body.price
+      let updatedBirthday = {
+          DOB: req.body.DOB,
+          firstName: req.body.firstName,
+          lastName: req.body.lastName
       };
 
-      await Stock.findByIdAndUpdate(id, updatedPart);
+      await Birthday.findByIdAndUpdate(id, updatedBirthday);
 
-      res.redirect('/stock');
+      res.redirect('/birthday');
   } catch (err) {
       console.error(err);
-      res.render('Parts/list', {
+      res.render('Birthdays/list', {
           error: 'Error on the server'
       });
   }
@@ -90,13 +89,13 @@ router.post('/edit/:id', async (req, res, next) => {
 router.get('/delete/:id',async(req,res,next)=>{
   try{
       let id=req.params.id;
-      Stock.deleteOne({_id:id}).then(()=>{
-          res.redirect('/stock')
+      Birthday.deleteOne({_id:id}).then(()=>{
+          res.redirect('/birthday')
       })
   }
   catch(error){
       console.error(err);
-      res.render('Parts/list',{
+      res.render('Birthdays/list',{
           error:'Error on the server'
       })
   }
