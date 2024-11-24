@@ -1,0 +1,40 @@
+<%- include ../Partials/header.ejs%>
+<%- include ../Partials/main_nav.ejs%>
+<main class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-10">
+            <h1><%= title %></h1>
+            <br>
+            <a href="/stock/add" class="btn btn-primary" role="button">
+                <i class="fas fa-plus-circle"></i> Add Part
+            </a>
+            <table class="table table-bordered table-striped table-hover">
+                <tr class="d-flex">
+                    <th class="text-center col-2">Description</th>
+                    <th class="text-center col-2">Item</th>
+                    <th class="text-center col-1">Price</th>
+                </tr>
+                <% for(let count=0;count<stockItems.length;count++) { %>
+                    <tr class="d-flex">
+                        <td class="text-center col-2"><%= stockItems[count].description %></td>
+                        <td class="text-center col-2"><%= stockItems[count].item %></td>
+                        <td class="text-center col-1"><%=stockItems[count].price%></td>
+                        <td class="text-center col-1">
+                            <a href="/stock/edit/<%= stockItems[count]._id%>"
+                                class="btn btn-primary btn-sm">
+                            <i class="fas fa-pencil-alt"></i>edit
+                        </a>
+                        </td>
+                        <td class="text-center col-1">
+                            <a href="/stock/delete/<%= stockItems[count]._id%>"
+                                class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i>Delete
+                        </a>
+                        </td>
+                    </tr>    
+                <%} %>
+            </table>
+        </div>
+    </div>
+</main>
+<%- include ../Partials/footer.ejs%>
