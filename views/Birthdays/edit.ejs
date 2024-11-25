@@ -1,26 +1,27 @@
 <!-- views/Parts/edit.ejs -->
 <%- include ../Partials/header.ejs%>
 <%- include ../Partials/main_nav.ejs%>
-
+<img class = "birthdayBackground" src ="https://plus.unsplash.com/premium_photo-1664304077938-d9f65c41583c?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
 <div class="container">
+    <link rel = 'stylesheet' href='/stylesheets/style.css' />
     <div class="row">
         <div class="offset-md-3 col-md-6">
             <h1><%= title %></h1>
             <form class="form" method="POST">
                 <div class="form-group">
-                    <label for="descriptionTextField">Description</label>
-                    <input type="text" class="form-control" id="descriptionTextField" placeholder="Enter the Description" name="description" value="<%= Stock.description %>" required>
+                    <label for="DOBTextField">Date Of Birth</label>
+                    <input type="text" class="form-control" id="DOBTextField" placeholder="Enter the DOB" name="DOB" value="<%= Birthday.DOB %>" required>
                 </div>
                 <div class="form-group">
-                    <label for="itemTextField">Item</label>
-                    <input type="text" class="form-control" id="itemTextField" placeholder="Enter the Item name" name="item" value="<%= Stock.item %>" required>
+                    <label for="firstNameTextField">First Name</label>
+                    <input type="text" class="form-control" id="firstNameTextField" placeholder="Enter the First Name" name="firstName" value="<%= Birthday.firstName %>" required>
                 </div>
                 <div class="form-group">
-                    <label for="priceTextField">Price</label>
-                    <input type="text" class="form-control" id="priceTextField" placeholder="Enter the price" name="price" value="<%= Stock.price %>" required>
+                    <label for="lastNameTextField">Last Name</label>
+                    <input type="text" class="form-control" id="lastNameTextField" placeholder="Enter the Last Name" name="lastName" value="<%= Birthday.lastName %>" required>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit <i class="fas fa-edit"></i></button>  
-                <a href="/stock" class="btn btn-warning">Cancel <i class="fas fa-undo"></i></a>    
+                <a href="/birthday" class="btn btn-warning">Cancel <i class="fas fa-undo"></i></a>    
             </form>
         </div>
     </div>

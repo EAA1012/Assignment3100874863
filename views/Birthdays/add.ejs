@@ -1,7 +1,9 @@
 <%- include ../Partials/header.ejs%>
 <%- include ../Partials/main_nav.ejs%>
 <!--Content for Add Page-->
+<img class = "birthdayBackground" src ="https://plus.unsplash.com/premium_photo-1664304077938-d9f65c41583c?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
 <div class="container">
+    <link rel = 'stylesheet' href='/stylesheets/style.css' />
     <div class="row">
         <div class="offset-md-3 col-md-6">
             <h1><%= title %></h1>
@@ -12,11 +14,11 @@
                 </div>
                 <div class="form-group">
                     <label for="firstNameTextField">First Name</label>
-                    <input type="text" class="form-control" id="firstNameTextField" placeholder="Enter the firstName name" name="firstName" required>
+                    <input type="text" class="form-control" id="firstNameTextField" placeholder="Enter the first name" name="firstName" required>
                 </div>
                 <div class="form-group">
                     <label for="lastNameTextField">Last Name</label>
-                    <input type="text" class="form-control" id="lastNameTextField" placeholder="Enter the lastName" name="lastName" required>
+                    <input type="text" class="form-control" id="lastNameTextField" placeholder="Enter the last name" name="lastName" required>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit
                     <i class="fas fa-edit"></i>
